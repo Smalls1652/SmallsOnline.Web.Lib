@@ -8,6 +8,7 @@ public interface ITrackData
     string? Artist { get; set; }
     string? TrackArtUrl { get; set; }
     string? TrackUrl { get; set; }
+    DateTimeOffset? ReleaseDate { get; set; }
     string? Comments { get; set; }
     string? ListYear { get; set; }
 }

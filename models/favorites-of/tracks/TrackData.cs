@@ -22,6 +22,9 @@ public class TrackData : ITrackData
     [JsonPropertyName("trackUrl")]
     public string? TrackUrl { get; set; }
 
+    [JsonPropertyName("trackReleaseDate")]
+    public DateTimeOffset? ReleaseDate { get; set; }
+
     [JsonPropertyName("trackComments")]
     public string? Comments { get; set; }
 
