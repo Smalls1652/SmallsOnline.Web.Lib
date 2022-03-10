@@ -5,6 +5,12 @@ public class ProjectItem : IProjectItem
     public ProjectItem()
     {}
 
+    [JsonPropertyName("id")]
+    public string? Id { get; set; }
+
+    [JsonPropertyName("partitionKey")]
+    public string? PartitionKey { get; set; }
+
     [JsonPropertyName("projectName")]
     public string? Name { get; set; }
 
