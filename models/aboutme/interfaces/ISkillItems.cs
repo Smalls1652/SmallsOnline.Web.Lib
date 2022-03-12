@@ -6,6 +6,6 @@ public interface ISkillItems
 {
     string? Id { get; set; }
     string? PartitionKey { get; set; }
-    List<string>? ITSkills { get; set; }
-    List<string>? ProgrammingLanguages { get; set; }
+    List<SkillValue>? ITSkills { get; set; }
+    List<SkillValue>? ProgrammingLanguages { get; set; }
 }

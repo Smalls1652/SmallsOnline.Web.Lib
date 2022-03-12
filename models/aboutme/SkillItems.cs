@@ -14,8 +14,8 @@ public class SkillItems : ISkillItems
     public string? PartitionKey { get; set; }
 
     [JsonPropertyName("itSkills")]
-    public List<string>? ITSkills { get; set; }
+    public List<SkillValue>? ITSkills { get; set; }
 
     [JsonPropertyName("programmingLanguages")]
-    public List<string>? ProgrammingLanguages { get; set; }
+    public List<SkillValue>? ProgrammingLanguages { get; set; }
 }
