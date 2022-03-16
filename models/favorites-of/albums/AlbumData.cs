@@ -4,7 +4,13 @@ namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Albums;
 
 public class AlbumData : IAlbumData
 {
-    public AlbumData() { }
+    public AlbumData()
+    {
+        if (StandoutTracks is null)
+        {
+            StandoutTracks = new();
+        }
+    }
 
     [JsonPropertyName("id")]
     public string? Id { get; set; }
