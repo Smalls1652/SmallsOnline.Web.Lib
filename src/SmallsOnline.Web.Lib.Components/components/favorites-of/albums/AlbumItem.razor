@@ -14,7 +14,10 @@
                     <div class="col">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <i class="bi bi-star-fill bi-icon-color-gold"></i>
+                                @if (@ItemData.IsBest)
+                                {
+                                    <i class="bi bi-star-fill bi-icon-color-gold" />
+                                }
                                 @ItemData.Title
                             </h4>
                             <div class="card-subtitle text-muted">by @ItemData.Artist</div>
