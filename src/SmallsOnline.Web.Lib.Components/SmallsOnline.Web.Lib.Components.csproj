@@ -11,7 +11,7 @@
     <Authors>Timothy Small</Authors>
     <Company>Smalls.Online</Company>
     <RepositoryUrl>https://github.com/Smalls1652/SmallsOnline.Web.Lib</RepositoryUrl>
-    <VersionPrefix>2022.04.00</VersionPrefix>
+    <VersionPrefix>2022.04.01</VersionPrefix>
     <Description>
       Common Razor components used for https://smalls.online.
     </Description>
