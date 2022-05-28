@@ -26,6 +26,9 @@ public class BlogEntry : IBlogEntry
 
     [JsonPropertyName("blogTags")]
     public List<string>? BlogTags { get; set; }
+    
+    [JsonPropertyName("blogIsPublished")]
+    public bool BlogIsPublished { get; set; }
 
     public string? BlogContentHtml
     {
