@@ -15,6 +15,12 @@ public class BlogEntry : IBlogEntry
         BlogTags = blogTags;
     }
 
+    [JsonPropertyName("id")]
+    public string? Id { get; set; }
+
+    [JsonPropertyName("partitionKey")]
+    public string? PartitionKey { get; set; }
+
     [JsonPropertyName("blogTitle")]
     public string? BlogTitle { get; set; }
 
