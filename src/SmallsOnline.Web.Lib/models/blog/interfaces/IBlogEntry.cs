@@ -4,10 +4,10 @@ public interface IBlogEntry
 {
     string? Id { get; set; }
     string? PartitionKey { get; set; }
-    string? BlogTitle { get; set; }
-    DateTimeOffset? BlogPostedDate { get; set; }
-    string? BlogContent { get; set; }
-    List<string>? BlogTags { get; set; }
-    bool BlogIsPublished { get; set; }
-    string? BlogContentHtml { get; }
+    string? Title { get; set; }
+    DateTimeOffset? PostedDate { get; set; }
+    string? Content { get; set; }
+    List<string>? Tags { get; set; }
+    bool IsPublished { get; set; }
+    string? ContentHtml { get; }
 }

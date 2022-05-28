@@ -7,12 +7,12 @@ public class BlogEntry : IBlogEntry
     public BlogEntry()
     { }
 
-    public BlogEntry(string? blogTitle, DateTimeOffset? blogPostedDate, string? blogContent, List<string>? blogTags)
+    public BlogEntry(string? title, DateTimeOffset? postedDate, string? content, List<string>? tags)
     {
-        BlogTitle = blogTitle;
-        BlogPostedDate = blogPostedDate;
-        BlogContent = blogContent;
-        BlogTags = blogTags;
+        Title = title;
+        PostedDate = postedDate;
+        Content = content;
+        Tags = tags;
     }
 
     [JsonPropertyName("id")]
@@ -22,28 +22,28 @@ public class BlogEntry : IBlogEntry
     public string? PartitionKey { get; set; }
 
     [JsonPropertyName("blogTitle")]
-    public string? BlogTitle { get; set; }
+    public string? Title { get; set; }
 
     [JsonPropertyName("blogPostedDate")]
-    public DateTimeOffset? BlogPostedDate { get; set; }
+    public DateTimeOffset? PostedDate { get; set; }
 
     [JsonPropertyName("blogContent")]
-    public string? BlogContent { get; set; }
+    public string? Content { get; set; }
 
     [JsonPropertyName("blogTags")]
-    public List<string>? BlogTags { get; set; }
+    public List<string>? Tags { get; set; }
     
     [JsonPropertyName("blogIsPublished")]
-    public bool BlogIsPublished { get; set; }
+    public bool IsPublished { get; set; }
 
-    public string? BlogContentHtml
+    public string? ContentHtml
     {
         get
         {
-            if (BlogContent is not null)
+            if (Content is not null)
             {
                 return Markdown.ToHtml(
-                    markdown: BlogContent,
+                    markdown: Content,
                     pipeline: new MarkdownPipelineBuilder()
                         .UsePipeTables()
                         .UseBootstrap()
