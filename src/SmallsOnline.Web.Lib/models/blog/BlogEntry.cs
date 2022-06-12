@@ -4,6 +4,7 @@ namespace SmallsOnline.Web.Lib.Models.Blog;
 
 public class BlogEntry : IBlogEntry
 {
+    [JsonConstructor()]
     public BlogEntry()
     { }
 
@@ -22,7 +23,7 @@ public class BlogEntry : IBlogEntry
     public string? PartitionKey { get; set; }
 
     [JsonPropertyName("blogTitle")]
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("blogPostedDate")]
     public DateTimeOffset? PostedDate { get; set; }
@@ -36,6 +37,7 @@ public class BlogEntry : IBlogEntry
     [JsonPropertyName("blogIsPublished")]
     public bool IsPublished { get; set; }
 
+    [JsonIgnore()]
     public string? ContentHtml
     {
         get
@@ -47,6 +49,7 @@ public class BlogEntry : IBlogEntry
                     pipeline: new MarkdownPipelineBuilder()
                         .UsePipeTables()
                         .UseBootstrap()
+                        .UseAutoLinks()
                         .Build()
                 );
             }
