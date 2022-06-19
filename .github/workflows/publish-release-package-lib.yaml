@@ -1,7 +1,6 @@
-name: Publish release package
+name: Publish release package (SmallsOnline.Web.Lib)
 on:
-  push:
-    tags: ["v*.*.*"]
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
