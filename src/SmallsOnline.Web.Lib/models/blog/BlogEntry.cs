@@ -23,7 +23,7 @@ public class BlogEntry : IBlogEntry
     public string? PartitionKey { get; set; }
 
     [JsonPropertyName("blogTitle")]
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     [JsonPropertyName("blogPostedDate")]
     public DateTimeOffset? PostedDate { get; set; }

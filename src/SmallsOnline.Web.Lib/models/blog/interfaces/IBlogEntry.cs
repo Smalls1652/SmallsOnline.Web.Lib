@@ -4,7 +4,7 @@ public interface IBlogEntry
 {
     string? Id { get; set; }
     string? PartitionKey { get; set; }
-    string Title { get; set; }
+    string? Title { get; set; }
     DateTimeOffset? PostedDate { get; set; }
     string? Content { get; set; }
     List<string>? Tags { get; set; }
