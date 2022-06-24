@@ -1,3 +1,4 @@
+using System.IO;
 using Markdig;
 
 namespace SmallsOnline.Web.Lib.Models.Blog;
@@ -8,8 +9,36 @@ public class BlogEntry : IBlogEntry
     public BlogEntry()
     { }
 
+    public BlogEntry(string filePath, string? title, DateTimeOffset? postedDate, List<string> tags)
+    {
+        string absoluteFilePath = Path.GetFullPath(filePath);
+
+        bool fileExists = File.Exists(absoluteFilePath);
+        if (!fileExists)
+        {
+            throw new FileNotFoundException($"The file at the path '{filePath}' does not exist.");
+        }
+
+        FileInfo fileInfo = new(absoluteFilePath);
+        if (fileInfo.Extension != ".md" && fileInfo.Extension != ".txt")
+        {
+            throw new Exception("The provided file does not have an extension of '.md' or '.txt'.");
+        }
+
+        using (StreamReader streamReader = new(absoluteFilePath))
+        {
+            Content = streamReader.ReadToEnd();
+        }
+
+        Id = Guid.NewGuid().ToString();
+        Title = title;
+        PostedDate = postedDate;
+        Tags = tags;
+    }
+
     public BlogEntry(string? title, DateTimeOffset? postedDate, string? content, List<string>? tags)
     {
+        Id = Guid.NewGuid().ToString();
         Title = title;
         PostedDate = postedDate;
         Content = content;
@@ -33,7 +62,7 @@ public class BlogEntry : IBlogEntry
 
     [JsonPropertyName("blogTags")]
     public List<string>? Tags { get; set; }
-    
+
     [JsonPropertyName("blogIsPublished")]
     public bool IsPublished { get; set; }
 
