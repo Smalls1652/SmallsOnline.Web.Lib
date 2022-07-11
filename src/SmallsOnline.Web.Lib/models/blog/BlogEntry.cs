@@ -1,4 +1,3 @@
-using System.IO;
 using Markdig;
 
 namespace SmallsOnline.Web.Lib.Models.Blog;
@@ -88,4 +87,8 @@ public class BlogEntry : IBlogEntry
             }
         }
     }
+
+    public string ConvertToJson() => JsonSerializer.Serialize(this);
+
+    public static BlogEntry? ConvertFromJson(string jsonContent) => JsonSerializer.Deserialize<BlogEntry>(jsonContent);
 }
