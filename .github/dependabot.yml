@@ -7,6 +7,8 @@ updates:
       interval: "daily"
     labels:
       - "dependency update"
+    assignees:
+      - "Smalls1652"
   - package-ecosystem: "nuget"
     directory: "/src/SmallsOnline.Web.Lib.Components/"
     target-branch: "dev"
@@ -14,3 +16,5 @@ updates:
       interval: "daily"
     labels:
       - "dependency update"
+    assignees:
+      - "Smalls1652"
