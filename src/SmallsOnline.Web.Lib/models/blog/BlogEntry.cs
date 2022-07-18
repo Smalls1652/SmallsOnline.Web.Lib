@@ -75,6 +75,7 @@ public class BlogEntry : IBlogEntry
                 return Markdown.ToHtml(
                     markdown: Content,
                     pipeline: new MarkdownPipelineBuilder()
+                        .UseGenericAttributes()
                         .UsePipeTables()
                         .UseBootstrap()
                         .UseAutoLinks()
