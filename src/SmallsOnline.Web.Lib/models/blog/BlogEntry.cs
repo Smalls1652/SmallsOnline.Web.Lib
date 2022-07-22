@@ -1,4 +1,7 @@
+using System.Text.RegularExpressions;
 using Markdig;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace SmallsOnline.Web.Lib.Models.Blog;
 
@@ -92,4 +95,26 @@ public class BlogEntry : IBlogEntry
     public string ConvertToJson() => JsonSerializer.Serialize(this);
 
     public static BlogEntry? ConvertFromJson(string jsonContent) => JsonSerializer.Deserialize<BlogEntry>(jsonContent);
+
+    public static BlogEntry ConvertFromMarkdown(string content)
+    {
+        Regex contentRegex = new(@"(?:-{3}|\.{3})\r\n(?'metadata'.+?)\r\n(?:-{3}|\.{3})\r\n(?'content'.+)", RegexOptions.Singleline);
+        Match contentMatch = contentRegex.Match(content);
+
+        if (!contentMatch.Success)
+        {
+            throw new Exception("The provided content is not in the correct format.");
+        }
+        else
+        {
+            StringReader metadataReader = new(contentMatch.Groups["metadata"].Value);
+            IDeserializer yamlDeserializer = new DeserializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance)
+                .Build();
+            BlogEntry blogEntry = yamlDeserializer.Deserialize<BlogEntry>(metadataReader);
+            blogEntry.Content = contentMatch.Groups["content"].Value;
+            
+            return blogEntry;
+        }
+    }
 }
