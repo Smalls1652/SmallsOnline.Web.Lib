@@ -12,7 +12,7 @@ public class BlogEntry : IBlogEntry
     public BlogEntry()
     { }
 
-    public BlogEntry(string filePath, string? title, DateTimeOffset? postedDate, List<string> tags)
+    public BlogEntry(string filePath, string? title, DateTimeOffset? postedDate, List<string> tags, string? urlId)
     {
         string absoluteFilePath = Path.GetFullPath(filePath);
 
@@ -34,14 +34,16 @@ public class BlogEntry : IBlogEntry
         }
 
         Id = Guid.NewGuid().ToString();
+        _urlId = urlId;
         Title = title;
         PostedDate = postedDate;
         Tags = tags;
     }
 
-    public BlogEntry(string? title, DateTimeOffset? postedDate, string? content, List<string>? tags)
+    public BlogEntry(string? title, DateTimeOffset? postedDate, string? content, List<string>? tags, string? urlId)
     {
         Id = Guid.NewGuid().ToString();
+        _urlId = urlId;
         Title = title;
         PostedDate = postedDate;
         Content = content;
