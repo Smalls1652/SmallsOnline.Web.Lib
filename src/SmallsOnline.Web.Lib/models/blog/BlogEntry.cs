@@ -54,6 +54,24 @@ public class BlogEntry : IBlogEntry
     [JsonPropertyName("partitionKey")]
     public string? PartitionKey { get; set; }
 
+    [JsonPropertyName("blogUrlId")]
+    public string? UrlId 
+    {
+        get
+        {
+            if (_urlId is null)
+            {
+                return Id;
+            }
+            else
+            {
+                return _urlId;
+            }
+        }
+
+        set => _urlId = value;
+    }
+
     [JsonPropertyName("blogTitle")]
     public string? Title { get; set; }
 
@@ -92,6 +110,8 @@ public class BlogEntry : IBlogEntry
             }
         }
     }
+
+    private string? _urlId;
 
     public string ConvertToJson() => JsonSerializer.Serialize(this);
 
