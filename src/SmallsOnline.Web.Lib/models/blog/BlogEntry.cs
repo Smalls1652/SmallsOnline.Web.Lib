@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 using Markdig;
 using YamlDotNet.Serialization;
@@ -113,8 +114,67 @@ public class BlogEntry : IBlogEntry
                 .Build();
             BlogEntry blogEntry = yamlDeserializer.Deserialize<BlogEntry>(metadataReader);
             blogEntry.Content = contentMatch.Groups["content"].Value;
-            
+
             return blogEntry;
+        }
+    }
+
+    public string GetExcerpt(bool asPlainText = false)
+    {
+        if (Content is not null)
+        {
+            // Intialize a StringBuilder to hold the shortened content.
+            StringBuilder markdownShort = new();
+
+            // Use StringReader to read the content.
+            using (StringReader stringReader = new(Content))
+            {
+                // Loop through each line until 'moreLineFound' is set to true.
+                bool moreLineFound = false;
+                while (!moreLineFound)
+                {
+                    string? line = stringReader.ReadLine();
+
+                    if (line == "<!--more-->")
+                    {
+                        // If the line is '<!--more-->',
+                        // then set 'moreLineFound' to true and exit the loop.
+                        moreLineFound = true;
+                    }
+                    else if (line is not null)
+                    {
+                        // If the line is not null and is not '<!--more-->',
+                        // then add the line to the StringBuilder.
+                        markdownShort.AppendLine(line);
+                    }
+                    else
+                    {
+                        // If we've reached the end of the content,
+                        // then set 'moreLineFound' to true and exit the loop.
+                        moreLineFound = true;
+                        break;
+                    }
+                }
+            }
+
+            // Return the excerpt
+            if (!asPlainText)
+            {
+                return markdownShort.ToString();
+            }
+            else
+            {
+                return Markdown.ToPlainText(
+                    markdown: markdownShort.ToString(),
+                    pipeline: new MarkdownPipelineBuilder()
+                        .ConfigureNewLine(" ")
+                        .Build()
+                );
+            }
+        }
+        else
+        {
+            throw new NullReferenceException("The 'Content' property is null.");
         }
     }
 }
