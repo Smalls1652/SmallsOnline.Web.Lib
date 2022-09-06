@@ -1,3 +1,4 @@
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
 @namespace SmallsOnline.Web.Lib.Components.FavoritesOf.Albums
 @inherits ComponentBase
 
@@ -43,8 +44,7 @@
                             <div class="list-group">
                                 @if (ItemData.StandoutTracks != null)
                                 {
-                                    @foreach (AlbumStandoutSong standoutSongItem in
-                                   ItemData.StandoutTracks)
+                                    @foreach (AlbumStandoutSong standoutSongItem in ItemData.StandoutTracks)
                                     {
                                         <div class="list-group-item list-group-item-action">
                                             <a href="@standoutSongItem.TrackUrl" target="_blank" rel="noopener noreferrer"
