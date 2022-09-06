@@ -1,8 +1,8 @@
-namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks;
+namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
-public class TrackData : ITrackData
+public class SongData : ISongData
 {
-    public TrackData() {}
+    public SongData() {}
 
     [JsonPropertyName("id")]
     public string? Id { get; set; }
