@@ -19,7 +19,7 @@ public class AlbumData : IAlbumData
     public string? Artist { get; set; }
 
     [JsonPropertyName("albumStandoutTracks")]
-    public List<AlbumStandoutTrack> StandoutTracks { get; set; } = new();
+    public List<AlbumStandoutSong> StandoutTracks { get; set; } = new();
 
     [JsonPropertyName("albumArtUrl")]
     public string? AlbumArtUrl { get; set; }

@@ -1,7 +1,6 @@
+@using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
 @namespace SmallsOnline.Web.Lib.Components.FavoritesOf.Albums
 @inherits ComponentBase
-
-@using SmallsOnline.Web.Lib.Models.FavoritesOf.Albums
 
 <div class="card shadow-sm">
     <div class="row">
@@ -40,17 +39,16 @@
                     </div>
                     <hr>
                     <div>
-                        <h4>Standout Tracks</h4>
+                        <h4>Standout Songs</h4>
                         <div>
                             <div class="list-group">
                                 @if (ItemData.StandoutTracks != null)
                                 {
-                                    @foreach (AlbumStandoutTrack standoutTrackItem in
-                                   ItemData.StandoutTracks)
+                                    @foreach (AlbumStandoutSong standoutSongItem in ItemData.StandoutTracks)
                                     {
                                         <div class="list-group-item list-group-item-action">
-                                            <a href="@standoutTrackItem.TrackUrl" target="_blank" rel="noopener noreferrer"
-                                        class="text-decoration-none stretched-link">@standoutTrackItem.Name</a>
+                                            <a href="@standoutSongItem.TrackUrl" target="_blank" rel="noopener noreferrer"
+                                        class="text-decoration-none stretched-link">@standoutSongItem.Name</a>
                                         </div>
                                     }
                                 }

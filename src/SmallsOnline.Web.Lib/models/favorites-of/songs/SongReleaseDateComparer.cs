@@ -1,8 +1,8 @@
-namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Tracks;
+namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
-public class TrackReleaseDateComparer : IComparer<TrackData>
+public class SongReleaseDateComparer : IComparer<SongData>
 {
-    public int Compare(TrackData? track1, TrackData? track2)
+    public int Compare(SongData? track1, SongData? track2)
     {
         if (track1 != null && track2 != null && track1.ReleaseDate.HasValue == true && track2.ReleaseDate.HasValue == true)
         {
