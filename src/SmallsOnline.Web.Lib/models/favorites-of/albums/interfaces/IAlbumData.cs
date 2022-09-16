@@ -15,4 +15,5 @@ public interface IAlbumData
     string? Comments { get; set; }
     DateTimeOffset? ReleaseDate { get; set; }
     string? ListYear { get; set; }
+    string? AlbumId { get; }
 }
