@@ -11,4 +11,5 @@ public interface ISongData
     DateTimeOffset? ReleaseDate { get; set; }
     string? Comments { get; set; }
     string? ListYear { get; set; }
+    string? SongId { get; }
 }
