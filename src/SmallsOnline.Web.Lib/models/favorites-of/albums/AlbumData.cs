@@ -7,6 +7,9 @@ public class AlbumData : DatabaseItem, IAlbumData
 {
     public AlbumData() { }
 
+    [JsonPropertyName("@schemaVersion")]
+    public string? SchemaVersion { get; set; }
+
     [JsonPropertyName("albumTitle")]
     public string? Title { get; set; }
 

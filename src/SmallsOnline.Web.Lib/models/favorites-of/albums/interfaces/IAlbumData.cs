@@ -6,6 +6,7 @@ public interface IAlbumData
 {
     string Id { get; set; }
     string PartitionKey { get; set; }
+    string? SchemaVersion { get; set; }
     string? Title { get; set; }
     string? Artist { get; set; }
     List<AlbumStandoutSongItem>? StandoutSongs { get; set; }
