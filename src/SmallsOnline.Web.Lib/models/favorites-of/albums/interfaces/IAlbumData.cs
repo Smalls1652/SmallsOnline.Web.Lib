@@ -8,6 +8,7 @@ public interface IAlbumData
     string PartitionKey { get; set; }
     string? Title { get; set; }
     string? Artist { get; set; }
+    List<AlbumStandoutSongItem>? StandoutSongs { get; set; }
     List<AlbumStandoutSong> StandoutTracks { get; set; }
     string? AlbumArtUrl { get; set; }
     string? AlbumUrl { get; set; }

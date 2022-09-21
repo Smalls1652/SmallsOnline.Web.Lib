@@ -13,6 +13,9 @@ public class AlbumData : DatabaseItem, IAlbumData
     [JsonPropertyName("albumArtist")]
     public string? Artist { get; set; }
 
+    [JsonPropertyName("albumStandoutSongs")]
+    public List<AlbumStandoutSongItem>? StandoutSongs { get; set; }
+
     [JsonPropertyName("albumStandoutTracks")]
     public List<AlbumStandoutSong> StandoutTracks { get; set; } = new();
 
