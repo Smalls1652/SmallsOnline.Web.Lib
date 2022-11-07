@@ -1,17 +1,12 @@
 using System.Collections.Generic;
+using SmallsOnline.Web.Lib.Models.Database;
 
 namespace SmallsOnline.Web.Lib.Models.AboutMe;
 
-public class SkillItems : ISkillItems
+public class SkillItems : DatabaseItem, ISkillItems
 {
     public SkillItems()
     {}
-
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
-
-    [JsonPropertyName("partitionKey")]
-    public string? PartitionKey { get; set; }
 
     [JsonPropertyName("itSkills")]
     public List<SkillValue>? ITSkills { get; set; }

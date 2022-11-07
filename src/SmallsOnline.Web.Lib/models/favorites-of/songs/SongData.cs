@@ -1,16 +1,11 @@
 using System.Text;
+using SmallsOnline.Web.Lib.Models.Database;
 
 namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
-public class SongData : ISongData
+public class SongData : DatabaseItem, ISongData
 {
     public SongData() {}
-
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
-
-    [JsonPropertyName("partitionKey")]
-    public string? PartitionKey { get; set; }
 
     [JsonPropertyName("trackTitle")]
     public string? Title { get; set; }
