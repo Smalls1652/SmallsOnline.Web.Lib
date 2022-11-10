@@ -6,4 +6,6 @@ public interface IAlbumStandoutSongItem
     int? SongNumber { get; set; }
     bool IsStandout { get; set; }
     string? SongUrl { get; set; }
+
+    public string GetSongNumberAsString();
 }

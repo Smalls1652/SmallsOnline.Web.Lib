@@ -16,4 +16,9 @@ public class AlbumStandoutSongItem : IAlbumStandoutSongItem
 
     [JsonPropertyName("songUrl")]
     public string? SongUrl { get; set; }
+
+    public string GetSongNumberAsString()
+    {
+        return SongNumber is not null && SongNumber != 0 ? $"{SongNumber}." : string.Empty;
+    }
 }
