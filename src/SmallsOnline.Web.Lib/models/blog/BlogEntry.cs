@@ -1,12 +1,13 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using Markdig;
+using SmallsOnline.Web.Lib.Models.Database;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
 namespace SmallsOnline.Web.Lib.Models.Blog;
 
-public class BlogEntry : IBlogEntry
+public class BlogEntry : DatabaseItem, IBlogEntry
 {
     [JsonConstructor()]
     public BlogEntry()
@@ -49,12 +50,6 @@ public class BlogEntry : IBlogEntry
         Content = content;
         Tags = tags;
     }
-
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
-
-    [JsonPropertyName("partitionKey")]
-    public string? PartitionKey { get; set; }
 
     [JsonPropertyName("blogUrlId")]
     public string? UrlId 

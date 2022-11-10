@@ -2,8 +2,8 @@ namespace SmallsOnline.Web.Lib.Models.FavoritesOf.Songs;
 
 public interface ISongData
 {
-    string? Id { get; set; }
-    string? PartitionKey { get; set; }
+    string Id { get; set; }
+    string PartitionKey { get; set; }
     string? Title { get; set; }
     string? Artist { get; set; }
     string? TrackArtUrl { get; set; }

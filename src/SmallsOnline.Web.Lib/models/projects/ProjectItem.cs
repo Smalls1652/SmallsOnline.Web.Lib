@@ -1,15 +1,11 @@
+using SmallsOnline.Web.Lib.Models.Database;
+
 namespace SmallsOnline.Web.Lib.Models.Projects;
 
-public class ProjectItem : IProjectItem
+public class ProjectItem : DatabaseItem, IProjectItem
 {
     public ProjectItem()
     {}
-
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
-
-    [JsonPropertyName("partitionKey")]
-    public string? PartitionKey { get; set; }
 
     [JsonPropertyName("projectName")]
     public string? Name { get; set; }
