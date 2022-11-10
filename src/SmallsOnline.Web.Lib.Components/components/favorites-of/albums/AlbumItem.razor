@@ -12,7 +12,7 @@
                 <h4 class="card-title">
                     @if (@ItemData.IsBest)
                     {
-                        <i class="bi bi-star-fill bi-icon-color-gold" />
+                        <i class="bi bi-star-fill bi-icon-color-gold"></i>
                     }
                     @ItemData.Title
                 </h4>
@@ -35,28 +35,56 @@
                     </div>
                     <div class="pt-2">
                         <a href="@ItemData.AlbumUrl" target="_blank" rel="noopener noreferrer" class="btn btn-glaucous"
-                            role="button">Open Album</a>
+                           role="button">
+                            Open Album
+                        </a>
                     </div>
                     <hr>
                     <div>
                         <h4>Standout Songs</h4>
                         <div>
                             <div class="list-group">
-                                @if (ItemData.StandoutTracks != null)
+                                @if (ItemData.SchemaVersion is null)
                                 {
-                                    @foreach (AlbumStandoutSong standoutSongItem in ItemData.StandoutTracks)
+                                    @if (ItemData.StandoutTracks is not null)
                                     {
-                                        <div class="list-group-item list-group-item-action">
-                                            <a href="@standoutSongItem.TrackUrl" target="_blank" rel="noopener noreferrer"
-                                        class="text-decoration-none stretched-link">@standoutSongItem.Name</a>
+                                        @foreach (AlbumStandoutSong standoutSongItem in ItemData.StandoutTracks)
+                                        {
+                                            <div class="list-group-item list-group-item-action">
+                                                <a href="@standoutSongItem.TrackUrl" target="_blank" rel="noopener noreferrer"
+                                                   class="text-decoration-none stretched-link">
+                                                    @standoutSongItem.Name
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="list-group-item">
+                                            No tracks were provided in the dataset.
                                         </div>
                                     }
                                 }
-                                else
+                                else if (ItemData.SchemaVersion == "2.0")
                                 {
-                                    <div class="list-group-item">
-                                        No tracks were provided in the dataset.
-                                    </div>
+                                    @if (ItemData.OnlyStandoutSongs is not null)
+                                    {
+                                        @foreach (AlbumStandoutSongItem standoutSongItem in ItemData.OnlyStandoutSongs)
+                                        {
+                                            <div class="list-group-item list-group-item-action">
+                                                <a href="@standoutSongItem.SongUrl" target="_blank" rel="noopener noreferrer"
+                                                   class="text-decoration-none stretched-link">
+                                                    @standoutSongItem.GetSongNumberAsString() @standoutSongItem.Name
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="list-group-item">
+                                            No tracks were provided in the dataset.
+                                        </div>
+                                    }
                                 }
                             </div>
                         </div>
