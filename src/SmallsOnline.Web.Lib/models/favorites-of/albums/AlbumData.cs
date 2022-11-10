@@ -7,11 +7,17 @@ public class AlbumData : DatabaseItem, IAlbumData
 {
     public AlbumData() { }
 
+    [JsonPropertyName("@schemaVersion")]
+    public string? SchemaVersion { get; set; }
+
     [JsonPropertyName("albumTitle")]
     public string? Title { get; set; }
 
     [JsonPropertyName("albumArtist")]
     public string? Artist { get; set; }
+
+    [JsonPropertyName("albumStandoutSongs")]
+    public List<AlbumStandoutSongItem>? StandoutSongs { get; set; }
 
     [JsonPropertyName("albumStandoutTracks")]
     public List<AlbumStandoutSong> StandoutTracks { get; set; } = new();
