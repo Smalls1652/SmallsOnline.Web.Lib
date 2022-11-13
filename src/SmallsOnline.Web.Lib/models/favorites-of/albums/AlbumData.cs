@@ -19,6 +19,9 @@ public class AlbumData : DatabaseItem, IAlbumData
     [JsonPropertyName("albumStandoutSongs")]
     public List<AlbumStandoutSongItem>? StandoutSongs { get; set; }
 
+    [JsonIgnore]
+    public List<AlbumStandoutSongItem>? OnlyStandoutSongs => GetOnlyStandoutSongs();
+
     [JsonPropertyName("albumStandoutTracks")]
     public List<AlbumStandoutSong> StandoutTracks { get; set; } = new();
 
@@ -60,6 +63,15 @@ public class AlbumData : DatabaseItem, IAlbumData
 
             return stringBuilder.ToString().ToLower();
         }
+    }
+
+    private List<AlbumStandoutSongItem>? GetOnlyStandoutSongs()
+    {
+        return (StandoutSongs is not null) switch
+        {
+            true => StandoutSongs.FindAll(item => item.IsStandout),
+            _ => null
+        };
     }
 
     private static string BuildIdentifierText(string input)
